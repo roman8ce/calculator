@@ -1,0 +1,35 @@
+services:
+  app: 
+    build: .
+    container_name: calculator_app
+    ports:
+        - 8000:8000
+    volumes: 
+      - .:/app
+    depends_on:
+      db: 
+          condition: service_healthy
+    links:
+        - db
+
+  db:
+      image: postgres:15
+      container_name: calculator_db
+      ports:
+        - 5432:5432
+      environment: 
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: harDpa55w0rD
+        POSTGRES_DB: calculator_db
+      volumes:
+        - ./data:/var/lib/postgresql/data
+      healthcheck: 
+        test: ["CMD", "pg_isready", "-d", "calculator_db", "-U", "postgres"]
+        interval: 5s 
+        retries: 5 
+      restart: always 
+
+volumes:
+  postgres_data:
+
+  

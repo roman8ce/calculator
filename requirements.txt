@@ -1,0 +1,4 @@
+fastapi
+sympy
+uvicorn[standard]
+asyncpg
