@@ -1,7 +1,14 @@
 import sympy as sp
 import asyncpg
 from fastapi import FastAPI, Depends, HTTPException
-from database import get_db_connection
+import config
+
+async def get_db_connection():
+    conn = await asyncpg.connect(config.database_url)
+    try:
+        yield conn
+    finally:
+        await conn.close()
 
 app = FastAPI()
 

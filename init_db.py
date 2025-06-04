@@ -1,11 +1,10 @@
 import asyncpg
 import asyncio
-
-DATABASE_URL = 'postgresql://postgres:harDpa55w0rD@db:5432/calculator_db'
+import config
 
 async def create_table():
     try:
-        conn = await asyncpg.connect(DATABASE_URL)
+        conn = await asyncpg.connect(config.database_url)
         await conn.execute('''
             CREATE EXTENSION IF NOT EXISTS "uuid-ossp";               
 
@@ -21,7 +20,6 @@ async def create_table():
         print(f'Error creating table: {e}')
     finally:
         await conn.close()
-
 
 if __name__ == '__main__':
     asyncio.run(create_table())

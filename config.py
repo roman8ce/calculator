@@ -1,0 +1,1 @@
+database_url = 'postgresql://postgres:harDpa55w0rD@db:5432/calculator_db'
