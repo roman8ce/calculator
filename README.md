@@ -9,11 +9,15 @@
 
 ## Установка и запуск
 ### 1. Клонируем репозиторий
+```bash
 git clone https://github.com/roman8ce/calculator
 cd calculator
+```
 
 ### 2. Запускаем проект с помощью Docker Compose:
+```bash
 docker-compose up -d --build
+```
 
 ## Доступ
 http://localhost:8000/docs
