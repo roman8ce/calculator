@@ -1,0 +1,1 @@
+database_url = 'postgresql://postgres:postgres@postgres:5432/postgres'
